@@ -1,9 +1,17 @@
+:root {
+    --r34Color: #AAE5A4;
+    --BGColor: #FCF9D0;
+    --mainColor: #83B441;
+    --textAndEtc: #4A3424;
+    --accent: #7A0F2E;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #AAE5A4;
+    background-color: var(--BGColor);
     padding: 5vh;
     margin: 0;
     display: flex;
@@ -13,15 +21,14 @@ body {
     font-family: "JetBrains Mono", monospace;  
 }
 
-
 .card {
     padding: 3vh;
-    border:3px groove #996666;
+    border:3px groove var(--textAndEtc);
     border-radius: 10px;
     max-width: 600px;
     width: 100%;
-    background-color: #FFF5EE;
-
+    background-color: var(--mainColor);
+    color: var(--textAndEtc);
 }
 
 .links {
@@ -37,6 +44,33 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.6em;
+    text-decoration: none;
+    color: var(--textAndEtc);
+    position: relative;
+    transition: color 0.25s;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s;
+}
+
+.links a:hover::after,
+.links a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.links a:hover,
+.links a:focus-visible {
+    color: var(--accent);
 }
 
 #rika {

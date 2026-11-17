@@ -54,6 +54,7 @@ function animateTitle() {
 
 const linksList = document.querySelectorAll(".links a")
 const coinSfx = new Audio("assets/coin.mp3")
+coinSfx.volume = 0.2;
 
 function clickLinkSfx() {
     coinSfx.currentTime = 0
