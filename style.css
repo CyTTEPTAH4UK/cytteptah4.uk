@@ -12,7 +12,7 @@
 
 body {
     background-color: var(--BGColor);
-    padding: 5vh;
+    padding: 2rem;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -22,13 +22,51 @@ body {
 }
 
 .card {
-    padding: 3vh;
+    padding: 1.5rem;
     border:3px groove var(--textAndEtc);
     border-radius: 10px;
     max-width: 600px;
     width: 100%;
     background-color: var(--mainColor);
     color: var(--textAndEtc);
+    container-type: inline-size;
+}
+
+@keyframes wobble {
+    from {rotate: -2deg;}
+    to {rotate: 2deg;}
+}
+
+@keyframes shy {
+    0%        { translate: 0 0; }
+    4%, 12%   { translate: -2px 0; }
+    8%, 16%   { translate: 2px 0; }
+    20%, 28%  { translate: -1px 0; }
+    24%, 32%  { translate: 1px 0; }
+    36%, 100% { translate: 0 0; }
+}
+
+.undertext {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 0.75em;
+    font-style: italic;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+.wobble {
+    animation: wobble 2s ease-in-out infinite alternate;
+}
+
+.shy {
+    animation: shy 3s linear infinite;
+}
+
+.card h1 {
+    font-size: min(4em, 100cqi / 8.6);
+    margin-bottom: 0;
 }
 
 .links {
@@ -100,10 +138,85 @@ body {
 
 #rika.nipah .rika_nipah {
     display: block;
+}
 
+.stuff {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+@container (max-width: 400px) {
+    .stuff { grid-template-columns: 1fr; }
+}
+
+.tall {
+    grid-row: span 2;
+}
+
+#leaf {
+    width: 100%;
+    cursor: pointer;
+    display: block;
+}
+
+#moeCounter {
+    display: flex;
+}
+
+#moeCounter img {
+    image-rendering: pixelated;
+    height: auto;
+    flex: 1;
+    min-width: 0;
+    max-width: 68px;
+}
+
+#screamer {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: black;
+    display: none;
+}
+
+#screamer.active {
+    display: block;
+}
+
+#screamer video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#dontTouch {
+    width: 100%;
+    max-width: 256px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#dontTouch img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#sand {
+    display: inline-block;
+    width: 1ch;
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
+    color: var(--accent);
+    vertical-align: 0.15em;
 }
 
 @media (max-width: 600px) {
+
     #rika img {
         height: 30vh;
     }
