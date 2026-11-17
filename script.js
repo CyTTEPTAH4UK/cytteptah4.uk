@@ -52,5 +52,15 @@ function animateTitle() {
     document.title = titleFrame
 }
 
+const linksList = document.querySelectorAll(".links a")
+const coinSfx = new Audio("assets/coin.mp3")
+
+function clickLinkSfx() {
+    coinSfx.currentTime = 0
+    coinSfx.play()
+}
+
+linksList.forEach((link) => {link.addEventListener("click", clickLinkSfx)})
+linksList.forEach((link) => {link.addEventListener("auxclick", clickLinkSfx)})
 rikaElement.addEventListener("click", nipah)
 setInterval(animateTitle, 250)
