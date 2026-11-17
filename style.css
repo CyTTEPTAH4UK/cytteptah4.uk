@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #AAE5A4;
+    padding: 5vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+    font-family: "JetBrains Mono", monospace;  
+}
+
+
+.card {
+    padding: 3vh;
+    border:3px groove #996666;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+    background-color: #FFF5EE;
+
+}
+
+.links {
+    list-style: none;
+}
+
+.icon {
+    height: 1em;
+    width: auto;
+}
+
+.links li a{
+    display: inline-flex;
+    align-items: center;
+}
+
+#rika {
+    cursor: pointer;
+    width: fit-content;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+}
+
+#rika img {
+    height: 50vh;
+    width: auto;
+}
+
+#rika .rika_normal {
+    display: block;
+}
+
+#rika.nipah .rika_normal {
+    display: none;
+}
+
+#rika .rika_nipah {
+    display: none;
+}
+
+#rika.nipah .rika_nipah {
+    display: block;
+
+}
+
+@media (max-width: 600px) {
+    #rika img {
+        height: 30vh;
+    }
+}
