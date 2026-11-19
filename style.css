@@ -208,7 +208,7 @@ body {
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 #dontTouch img{
@@ -246,7 +246,7 @@ body {
     transition: border-width 0.15s;
 }
 
-#lightbox {
+#lightbox {t
     position: fixed;
     inset: 0;
     z-index: 999;
