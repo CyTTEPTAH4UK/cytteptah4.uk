@@ -150,6 +150,55 @@ function sandAnimate() {
     setTimeout(sandAnimate, 120)
 }
 
+const lightbox = document.getElementById("lightbox")
+const lightboxImg = document.getElementById("lightboxImg")
+const photos = document.querySelector(".photos")
+let lastPhoto = null
+
+photos.querySelectorAll("img").forEach((img) => {
+    img.tabIndex = 0
+    img.setAttribute("role", "button")
+})
+
+function getImageLightbox(e) {
+    if(e.target.tagName !== "IMG") {
+        return
+    }
+    openLightbox(e.target)
+}
+
+function getImageLightboxKeyboard(e) {
+    if(e.key === " " || e.key === "Enter") {
+        e.preventDefault()
+        getImageLightbox(e)
+    }
+}
+
+function openLightbox(img) {
+    lightboxImg.src = img.src
+    lightboxImg.alt = img.alt
+    lightbox.classList.add("active")
+    document.body.style.overflow = "hidden"
+    lastPhoto = img
+}
+
+function closeLightbox() {
+    if(!lightbox.classList.contains("active")) return
+    lightbox.classList.remove("active")
+    document.body.style.overflow = ""
+    lastPhoto.focus()
+}
+
+function closeLightboxEsc(e) {
+    if (e.key === "Escape") {
+        closeLightbox()
+    }
+}
+
+photos.addEventListener("click", getImageLightbox)
+photos.addEventListener("keydown", getImageLightboxKeyboard)
+lightbox.addEventListener("click", closeLightbox)
+document.addEventListener("keydown", closeLightboxEsc)
 
 linksList.forEach((link) => {link.addEventListener("click", clickLinkSfx)})
 linksList.forEach((link) => {link.addEventListener("auxclick", clickLinkSfx)})
