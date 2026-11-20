@@ -69,6 +69,11 @@ body {
     36%, 100% { translate: 0 0; }
 }
 
+@keyframes spinLogo {
+    from { object-position: 0 0%; }
+    to { object-position: 0 100%; }
+}
+
 .undertext {
     color: var(--accent);
     margin-top: 0;
@@ -98,7 +103,14 @@ body {
 
 .icon {
     height: 1em;
-    width: auto;
+    width: 1em;
+    object-fit: cover;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .icon {
+        animation: spinLogo 3.05s steps(61, jump-none) infinite;
+    }
 }
 
 .links li a{
