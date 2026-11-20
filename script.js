@@ -175,10 +175,13 @@ function getImageLightboxKeyboard(e) {
 }
 
 function openLightbox(img) {
+    lightboxImg.removeAttribute("src")
     lightboxImg.src = img.src
     lightboxImg.alt = img.alt
-    lightbox.classList.add("active")
-    document.body.style.overflow = "hidden"
+    lightboxImg.decode().catch((err) => console.warn(err)).finally(() => { 
+        lightbox.classList.add("active")
+        document.body.style.overflow = "hidden"
+    })
     lastPhoto = img
 }
 
