@@ -152,28 +152,20 @@ body {
     position: fixed;
     bottom: 0px;
     right: 20px;
-    max-height: 395px;
 }
 
-#rika img {
-    height: 50vh;
+.rikaImg {
+    display: block;
+    height: min(50vh, 395px);
     width: auto;
+    aspect-ratio: 227 / 395;
+    object-fit: cover;
+    object-position: 0% 0
+
 }
 
-#rika .rika_normal {
-    display: block;
-}
-
-#rika.nipah .rika_normal {
-    display: none;
-}
-
-#rika .rika_nipah {
-    display: none;
-}
-
-#rika.nipah .rika_nipah {
-    display: block;
+#rika.nipah .rikaImg {
+    object-position: 100% 0;
 }
 
 .stuff {
