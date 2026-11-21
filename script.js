@@ -63,10 +63,27 @@ function clickLinkSfx(event) {
     coinSfx.play()
 }
 
+function copyLinkText(event) {
+    if (event.type === "auxclick" && event.button !== 1) return
+    
+    const link = event.currentTarget
+    const text = link.dataset.copy
+    const note = link.parentElement.querySelector(".copied")
+    navigator.clipboard.writeText(text)
+    .then(() => { 
+        note.textContent = `copied ${text}!`
+        note.classList.add("show")
+        clearTimeout(note.linkTimer)
+        note.linkTimer = setTimeout(() => note.classList.remove("show"), 4000)
+    })
+    .catch(console.warn)
+}
+
+
 const leafVideo = document.getElementById("leaf")
 leafVideo.volume = 0.4
 const cursorSfx = new Audio("assets/cursor.mp3")
-cursorSfx.volume = 0.4
+cursorSfx.volume = 0.02
 
 function playCursorSfx() {
     cursorSfx.currentTime = 0
@@ -225,6 +242,9 @@ document.addEventListener("keydown", closeLightboxEsc)
 
 linksList.forEach((link) => {link.addEventListener("click", clickLinkSfx)})
 linksList.forEach((link) => {link.addEventListener("auxclick", clickLinkSfx)})
+linksList.forEach((link) => { link.addEventListener("click", copyLinkText) })
+linksList.forEach((link) => { link.addEventListener("auxclick", copyLinkText) })
+
 
 rikaElement.addEventListener("click", nipah)
 
@@ -233,6 +253,7 @@ leafVideo.addEventListener("ended",() => {leafVideo.currentTime = 0})
 leafVideo.addEventListener("mouseenter", playCursorSfx)
 
 dontTouchButton.addEventListener("click", activeScreamer)
+dontTouchButton.addEventListener("mouseenter", playCursorSfx)
 
 setTimeout(sandAnimate, 120)
 

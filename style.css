@@ -350,6 +350,17 @@ body {
     background: rgba(0,0,0,0.75); 
 }
 
+.copied {
+    opacity: 0;
+    margin-left: 2em;
+    transition: opacity 3s;
+}
+
+.copied.show {
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
 @container (max-width: 400px) {
     .stuff { grid-template-columns: 1fr; }
     .photos { grid-template-columns: repeat(2, 1fr) }
