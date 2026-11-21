@@ -61,11 +61,11 @@ body {
 }
 
 @keyframes shy {
-    0%        { translate: 0 0; }
-    4%, 12%   { translate: -2px 0; }
-    8%, 16%   { translate: 2px 0; }
-    20%, 28%  { translate: -1px 0; }
-    24%, 32%  { translate: 1px 0; }
+    0% { translate: 0 0; }
+    4%, 12% { translate: -2px 0; }
+    8%, 16% { translate: 2px 0; }
+    20%, 28% { translate: -1px 0; }
+    24%, 32% { translate: 1px 0; }
     36%, 100% { translate: 0 0; }
 }
 
@@ -105,12 +105,6 @@ body {
     height: 1em;
     width: 1em;
     object-fit: cover;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .icon {
-        animation: spinLogo 3.05s steps(61, jump-none) infinite;
-    }
 }
 
 .links li a{
@@ -235,6 +229,15 @@ body {
     cursor: not-allowed;
 }
 
+@keyframes shake {
+    0% { translate: 0 0; }
+    20% { translate: -2px 0; }
+    40% { translate: 2px 0; }
+    60% { translate: 0 -2px; }
+    80% { translate: 0 2px; }
+    100% { translate: 0 0; }
+}
+
 #dontTouch img{
     width: 100%;
     height: auto;
@@ -316,5 +319,16 @@ body {
 
     #rika img {
         height: 30vh;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .icon {
+        animation: spinLogo 3.05s steps(61, jump-none) infinite;
+    }
+
+    #dontTouch:hover,
+    #dontTouch:focus-visible {
+        animation: shake 50ms linear infinite;
     }
 }

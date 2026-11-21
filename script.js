@@ -65,6 +65,12 @@ function clickLinkSfx(event) {
 
 const leafVideo = document.getElementById("leaf")
 leafVideo.volume = 0.4
+const cursorSfx = new Audio("assets/cursor.mp3")
+
+function playCursorSfx() {
+    cursorSfx.currentTime = 0
+    cursorSfx.play().catch((err) => console.warn(err))
+}
 
 function beatLeaf() {
     leafVideo.currentTime = 0
@@ -210,6 +216,7 @@ rikaElement.addEventListener("click", nipah)
 
 leafVideo.addEventListener("click", beatLeaf)
 leafVideo.addEventListener("ended",() => {leafVideo.currentTime = 0})
+leafVideo.addEventListener("mouseenter", playCursorSfx)
 
 dontTouchButton.addEventListener("click", activeScreamer)
 
