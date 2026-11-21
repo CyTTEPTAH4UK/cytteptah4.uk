@@ -66,6 +66,7 @@ function clickLinkSfx(event) {
 const leafVideo = document.getElementById("leaf")
 leafVideo.volume = 0.4
 const cursorSfx = new Audio("assets/cursor.mp3")
+cursorSfx.volume = 0.4
 
 function playCursorSfx() {
     cursorSfx.currentTime = 0
@@ -203,6 +204,19 @@ function closeLightboxEsc(e) {
         closeLightbox()
     }
 }
+
+function closeFakeCookies() {
+    fakeCookies.close()
+    document.body.style.overflow = ""
+}
+
+const fakeCookies = document.getElementById("fakeCookies")
+const buttons = document.querySelectorAll("#fakeCookies button")
+
+document.body.style.overflow = "hidden"
+fakeCookies.addEventListener("cancel", (event) => {event.preventDefault()})
+fakeCookies.showModal()
+buttons.forEach((button) => {button.addEventListener("click", closeFakeCookies)})
 
 photos.addEventListener("click", getImageLightbox)
 photos.addEventListener("keydown", getImageLightboxKeyboard)
